@@ -9,14 +9,25 @@ import '../../styles/theme.scss';
 import '../../styles/theme.scss.liquid';
 
 import $ from 'jquery';
+
 import {pageLinkFocus} from '@shopify/theme-a11y';
 import {cookiesEnabled} from '@shopify/theme-cart';
 import {wrapTable, wrapIframe} from '@shopify/theme-rte';
+
+window.jQuery = $;
+window.$ = $;
+require('owl.carousel');
 
 window.slate = window.slate || {};
 window.theme = window.theme || {};
 
 $(document).ready(() => {
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+  });
+
   // Common a11y fixes
   if (window.location.hash !== '#') {
     pageLinkFocus($(window.location.hash));
