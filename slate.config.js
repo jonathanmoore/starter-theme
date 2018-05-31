@@ -13,8 +13,28 @@ module.exports = {
   },
   slateTools: {
     extends: {
-      dev: {resolve: {alias}},
-      prod: {resolve: {alias}},
+      dev: {
+        resolve: {alias},
+        module: {
+          rules: [
+            {
+              test: require.resolve('owl.carousel'),
+              use: 'imports-loader?$=jquery,jQuery=jquery,window.jQuery=jquery',
+            },
+          ],
+        },
+      },
+      prod: {
+        resolve: {alias},
+        module: {
+          rules: [
+            {
+              test: require.resolve('owl.carousel'),
+              use: 'imports-loader?$=jquery,jQuery=jquery,window.jQuery=jquery',
+            },
+          ],
+        },
+      },
     },
   },
 };
