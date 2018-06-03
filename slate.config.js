@@ -12,9 +12,30 @@ module.exports = {
     cssVarLoaderLiquidPath: ['src/snippets/css-variables.liquid'],
   },
   slateTools: {
+    promptSettings: false,
     extends: {
-      dev: {resolve: {alias}},
-      prod: {resolve: {alias}},
+      dev: {
+        resolve: {alias},
+        module: {
+          rules: [
+            {
+              test: require.resolve('owl.carousel'),
+              use: 'imports-loader?jQuery=jquery,$=jquery',
+            },
+          ],
+        },
+      },
+      prod: {
+        resolve: {alias},
+        module: {
+          rules: [
+            {
+              test: require.resolve('owl.carousel'),
+              use: 'imports-loader?jQuery=jquery,$=jquery',
+            },
+          ],
+        },
+      },
     },
   },
 };
